@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5
+        .container
+            .row
+                .col-md-12
+                    h2.text-center.text-success(contenteditable='true')
+                        | Create Quiz
+                        br
+            .row
+                .col-md-12
+                    form(method='POST', action='/new-quiz')
+                        .form-group
+                            label Title
+                            input.form-control(type='text', id="quizTitle", placeholder='Enter title', required='required', name='title')
+                        hr
+                        button.btn.btn-success.mx-auto.w-25(type='submit' id="createQuizBtn") Create
+                        button.btn.btn-warning.mx-auto.w-25(type='button', href='/') Cancel

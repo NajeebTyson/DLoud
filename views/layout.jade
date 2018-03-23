@@ -1,0 +1,78 @@
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title=title
+    //script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(type='text/javascript', src='/jquery.min.js')
+    //script(type='text/javascript', src='http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+    script(type='text/javascript', src='/javascripts/default-bootstrap.js')
+    link(href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='/stylesheets/default-bootstrap.css', rel='stylesheet', type='text/css')
+    //link(href='/css/bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/stylesheets/style.css', rel='stylesheet', type='text/css')
+    link(href='/stylesheets/helppage.css', rel='stylesheet', type='text/css')
+    script(src='/javascripts/main.js', type='text/javascript')
+  body
+    .navbar.navbar-default.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-ex-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.brand(href='/')
+            span DLoud
+        #navbar-ex-collapse.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.active
+              a(href='/') Home
+            li
+              a(href='/portal') Portal
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                | Quiz
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/new-quiz') Create Quiz
+                li
+                  a(href='/hold-quizzes') Hold Quizzes
+                li
+                  a(href='/complete-quizzes') Complete Quizzes
+
+            li
+              a(href='/help') Help
+            if (!user)
+
+              li
+                a(href='/signup') Signup
+              li
+                a(href='/login') login
+            if (user)
+              li
+                a(href='/logout') Sign out #{user.local.name.first}
+     block content
+    //footer.section.section-primary.myfooter
+    //  .container
+    //    .row
+    //      .col-sm-6
+    //        h1 DLoud
+    //        p Keep in touch with your docs.
+    //      .col-sm-6
+    //        p.text-info.text-right
+    //          br
+    //          br
+    //        .row
+    //          .col-md-12.hidden-lg.hidden-md.hidden-sm.text-left
+    //            a(href='#')
+    //              i.fa.fa-3x.fa-fw.fa-twitter.text-inverse
+    //            a(href='https://www.facebook.com/')
+    //              i.fa.fa-3x.fa-fw.fa-facebook.text-inverse
+    //        .row
+    //          .col-md-12.hidden-xs.text-right
+    //            a(href='#')
+    //              i.fa.fa-3x.fa-fw.fa-twitter.text-inverse
+    //            a(href='https://www.facebook.com/')
+    //              i.fa.fa-3x.fa-fw.fa-facebook.text-inverse

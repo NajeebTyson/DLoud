@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5
+        .container
+            .row
+                .col-md-12
+                    h2.text-center.text-success Quiz
+                    p.text-muted.text-center(id="quizId") #{qId}
+            .row
+                h3.text-left Questions
+                .col-md-12(id='quizQuestions')
+

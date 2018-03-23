@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  script(src='/javascripts/quiz.js', type='text/javascript')
+  .cover
+    .cover-image(style="background-image : url('/assets/images/cover.jpg?w=1024&q=50&fm=jpg&s=478a9a2196033db7c0bf3c8ba3707f4d')")
+    .container
+      .row
+        .col-md-3.text-center
+          h2.text-default Sync with your documents
+        .col-md-6.text-center
+        if (quizzes)
+          .col-md-3.quiz-notif
+            h3.text-center Quizzes
+            ul.list-unstyled(id="listIndex")
+              if quizzes
+                -each q in quizzes
+                  li
+                    h4
+                      a(href='/quiz/answer/'+q._id) #{q.title} &nbsp;&nbsp;&nbsp;
+                      small (#{q.countQuestions})
+

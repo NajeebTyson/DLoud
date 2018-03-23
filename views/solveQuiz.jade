@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    script(type='text/javascript', src='/bootstrap-notify.min.js')
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5
+        .container
+            .row
+                .col-md-12
+                    h2.text-center.text-primary Quiz: #{quiz.title}
+            .row
+                form(action='/quiz/answer/' + quiz._id, method='POST')
+                    h3.text-left Questions
+                    .col-md-12(id='solveQQues')
+                        -counter=0
+                        -each q in quiz.questions
+                            -counter++
+                            h4
+                                strong Q:#{counter}.&nbsp;&nbsp;&nbsp;
+                                = q.question
+                            ul.que_opt.list-unstyled
+                                -each opt in q.qOptions
+                                    li
+                                        .radio
+                                            label
+                                                input(name='q-' + counter, type='radio', required='required', value=opt)
+                                                = opt
+                    .col-md-12
+                            button.btn.btn-block.btn-success(type='submit')
+                                | Done
+                                i.fa.fa-check.fa-fw

@@ -1,0 +1,231 @@
+.brand {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.path_bar {
+  background-color: #222;
+  color: white;
+  padding: 5px 10px;
+  font-style: oblique;
+}
+
+.doc_list li.driveListItem {
+  margin: 5px;
+  border: 1px solid #b7abab;
+  width: 100px;
+  height: 100px;
+}
+
+.doc-name {
+  font-size: inherit;
+  margin-top: 10px;
+}
+.doc_list li a:hover {
+  color: #337cbb;
+  text-decoration: none;
+}
+.new-item-col{
+  width: 99.333%;
+}
+.new-item-col a:hover {
+  text-decoration: none;
+  color: #337cbb;
+}
+
+.new-item-col a {
+  cursor: pointer;
+}
+
+.myfooter {
+  padding: 0 0 20px 0;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+}
+
+
+.portal-navbar {
+  margin-top: -35px !important;
+  text-align: center;
+  background-color: black;
+  width: 40%;
+  margin: 0 auto;
+}
+.portal-navbar > li {
+  float: none;
+  display: inline-block;
+  width: auto;
+}
+
+.portal-navbar > li.active > a, .portal-navbar > li.active > a:hover, .portal-navbar > li.active > a:focus {
+  color: #ffffff;
+  background-color: #337cbb;
+  border-radius: 0;
+}
+
+.portal-navbar > li > a:hover, .portal-navbar > li > a:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+  border-radius: 0;
+}
+
+.container.login-singup {
+  width: 500px;
+  border-right: 3px solid #e2d7d7;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-bottom: 3px solid #e2d7d7;
+  border-radius: 10px;
+}
+
+#show-pass {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  bottom: 128px;
+}
+
+.login-account a:hover {
+  text-decoration: none;
+  color: #337cbb;
+}
+
+.alert-login {
+  padding: 0px 5px;
+  font-size: smaller;
+  border-radius: 3px;
+}
+
+.modal-alert {
+  padding: 5px;
+  font-size: medium;
+  display: none;
+}
+
+#driveList li a {
+  cursor: pointer;
+
+  color: #337cbb;
+
+  padding-left: 0;
+}
+#driveList li a:hover {
+  cursor: pointer;
+
+  color: #41db33;
+
+  padding-left: 0;
+}
+
+.drive-item-opt{
+  position: absolute;
+  top: 13px;
+  color: #337cbb;
+}
+
+.item-opt-dropdown{
+  min-width: 100px;
+  padding: 5px;
+  border-radius: 0;
+
+}
+
+.item-opt-dropdown li{
+   color: #337cbb;
+   cursor: pointer;
+}
+.item-opt-dropdown li:hover{
+  color: #41db33;
+  cursor: pointer;
+}
+
+.drop-down{
+  cursor: pointer;
+}
+
+.rm-mem{
+  cursor: pointer;
+}
+
+/*drive path item*/
+.drivePathListItem {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #222;
+  border: 1px solid white;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 4px;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.drivePathListItem:hover {
+  color: #222;
+  background: #337cbb;
+  border: 1px solid #337cbb;
+}
+
+/*log table*/
+table.log-table {
+  font-size: smaller;
+}
+
+table.log-table thead{
+  background-color: #4cae4c;
+}
+
+table.log-table tr:hover{
+  background-color: #91c9b1;
+}
+
+/*table.log-table thead th {*/
+  /*height: 20px;*/
+
+  /*!*text-align: left;*!*/
+/*}*/
+
+.panel-log-table{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.panel-log-table h3{
+  font-size: inherit;
+}
+
+.table-div{
+  max-height: 250px;
+  overflow: auto;
+}
+
+.card.card-inverse.statCard {
+  margin: 10px;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.questionsList{
+  margin-top: 9px;
+}
+
+#newOption{
+  display: none;
+ }
+
+.que_opt {
+  margin-left: 40px;
+}
+
+.quiz-notif {
+  background-color: white;
+  border-radius: 7px;
+}
+
+.bg-success.resultScore {
+  padding: 20px;
+  border: 2px solid green;
+  border-radius: 10px;
+}

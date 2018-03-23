@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    .section
+        .container.login-singup
+            .row
+                .col-md-12
+                    h1.text-center.text-muted DocSync
+                    h2.text-center.text-muted Login
+                    - if (message)
+                        if(message.length > 0)
+                            h4.text-center.text-muted
+                                Login.alert.alert-danger.alert-login #{message}
+            .row
+                .col-md-12
+                    form(role='form', action='/login', method='post')
+                        .form-group
+                            label.control-label(for='email') Email
+                            input#email.form-control(placeholder='Enter email', type='email', name='email', required='required')
+                        .form-group
+                            label.control-label(for='pass') Password
+                            input#pass.form-control(placeholder='Password', type='password', required='required', name='password')
+                        button.btn.btn-block.btn-primary(type='submit') Login
+                        hr
+                        span.login-account Create account:&nbsp;
+                            a(href='/signup') Sign up
+

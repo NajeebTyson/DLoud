@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    //script(type='text/javascript', src='/Chart.bundle.js')
+    script(type='text/javascript', src='/Chart.js')
+    //script(type='text/javascript', src='/javascripts/Chart.min.js')
+    script(src='/javascripts/quizStat.js', type='text/javascript')
+    .container
+        .row(id='statRow')
+            h3.text-center Stats of #{quiz.title}
+            .col-md-12
+                .card.card-inverse.statCard
+                    span.locationStat
+                        canvas(id='quizStatCanvas', data-quiz=quiz, height=400, width=800)
+

@@ -1,0 +1,59 @@
+extends layout
+
+block content
+    h3.text-center Help
+    .col-md-8.col-md-offset-1
+        hr
+        .col-md-2
+            // required for floating
+            // Nav tabs
+            ul.nav.nav-tabs.tabs-left
+                li.active
+                    a(href='#uploadFile', data-toggle='tab') Upload File
+                li
+                    a(href='#createFolder', data-toggle='tab') Create Folder
+                li
+                    a(href='#addMember', data-toggle='tab') Add Member
+                li
+                    a(href='#removeMember', data-toggle='tab') Remove Member
+        .col-md-10
+            // Tab panes
+            .tab-content
+                #uploadFile.tab-pane.active
+                    h3 Upload File
+                    .row
+                        .col-md-12
+                            ol.help-tabs
+                                li Click on the "New File" button in Portal.
+                                li Click the "browse" button to select the file which you want to upload.
+                                li Enter the name/title for the file in the given text box.
+                                li Click the "Add" button to upload the file.
+
+                #createFolder.tab-pane
+                    h3 Create Folder
+                    .row
+                        .col-md-12
+                            ol.help-tabs
+                                li Click on the "New Folder" button in Portal.
+                                li Enter the name/title for the folder in the given text box.
+                                li Click the "Add" button to create the folder.
+
+                #addMember.tab-pane
+                    h3 Add Member
+                    .row
+                        .col-md-12
+                            ol.help-tabs
+                                li Click on the "Add Member" button in Portal.
+                                li Select the member from the drop down list.
+                                li Click the "Add member" button to add the member to project.
+
+                #removeMember.tab-pane
+                    h3 Upload File
+                    .row
+                        .col-md-12
+                            ol.help-tabs
+                                li Click on the "Remove Member" button in Portal.
+                                li Click the cross button in front of the member your want to remove.
+
+        .clearfix
+

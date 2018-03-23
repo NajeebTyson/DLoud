@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    script(type='text/javascript', src='/bootstrap-notify.min.js')
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5
+        .container
+            .row
+                .col-md-12
+                    h2.text-center.text-primary Quiz: #{qTitle}
+                    h3.text-center.bg-success.resultScore Your score is #{score}%;

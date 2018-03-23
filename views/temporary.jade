@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    script(src='/javascripts/temporary.js', type='text/javascript')
+    .row
+        .col-md-6
+           h3 Upload section
+           h4 suppose you upload file by clicking on the upload file
+           .btn.btn-primary(id="upload") File: example.jpg
+
+        .col-md-6
+            h3 Download section
+            h4 you can download the file from here
+            a.btn.btn-success(id="download") Download

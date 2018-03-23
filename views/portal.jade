@@ -1,0 +1,289 @@
+extends layout
+
+block content
+    script(src='/javascripts/portal.js', type='text/javascript')
+    script(type='text/javascript', src='/bootstrap-notify.min.js')
+    - myAdmin = false
+    if user.projects[0]
+        if user.projects[0].admin
+            - myAdmin = true
+    .section
+        .container
+            .row
+                .col-md-12
+                    ul.nav.nav-justified.nav-pills.portal-navbar
+                        li.active
+                            a(data-toggle='pill', href='#home')
+                                i.fa.fa-fw.fa-lg.fa-list-alt
+                                | Documents
+
+                        if myAdmin
+                            li
+                                a(data-toggle='pill', href='#menu1')
+                                    i.fa.fa-fw.fa-database.fa-lg
+                                    | Logs
+                    .tab-content
+                        #home.tab-pane.fade.in.active
+                            .panel.panel-primary
+                                .panel-heading
+                                    h3.panel-title.my-list-panel Documets
+                                .panel-body
+                                    p.lead.manage-header Manage your documents
+                                    .row.manage-portal-bar
+                                        .col-md-offset-6.col-md-2.list-manage-col
+                                            span
+                                        .col-md-4.new-item-col
+                                            h5.text-right
+                                                a#addMember(title='Add member to the project', data-toggle='modal', data-target='#add-member-modal', role='button')
+                                                    i.fa.fa-fw.fa-user-plus
+                                                    | Add Member &nbsp;&nbsp;
+                                                a#members(title='Remove member from the project', data-toggle='modal', data-target='#members-modal', role='button')
+                                                    i.fa.fa-fw.fa-users
+                                                    | Members &nbsp;&nbsp;
+                                                a#new-file(title='Upload new file', data-toggle='modal', data-target='#new-file-modal', role='button')
+                                                    i.fa.fa-fw.fa-file
+                                                    | New File &nbsp;&nbsp;
+                                                a#new-folder(title='Create new folder', data-toggle='modal', data-target='#new-folder-modal')
+                                                    i.fa.fa-fw.fa-folder
+                                                    | New Folder
+                                    .col-md-12.path_bar
+                                        |   Drive >
+                                        span(id='drivePath')
+                                    .col-md-12.documents
+                                        ol.doc_list.list-inline(id='driveList')
+                        if myAdmin
+                            #menu1.tab-pane.fade
+                                .panel.panel-primary
+                                    .panel-heading
+                                        h3.panel-title.my-list-panel Logs
+                                    .panel-body
+                                        .row
+                                            .col-md-12
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | File downloads
+                                                            i.fa.fa-fw.fa-download
+
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='fileDownloadLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th Time
+                                                                        th username
+                                                                        th User Id
+                                                                        th File Id
+                                                                        th File Name
+                                                                        th User IP
+                                                                tbody(id='logFileDownload')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | File uploads
+                                                            i.fa.fa-fw.fa-upload
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='fileUploadLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th Time
+                                                                        th username
+                                                                        th User Id
+                                                                        th File Id
+                                                                        th File Name
+                                                                        th User IP
+                                                                tbody(id='logFileUpload')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | File delete
+                                                            i.fa.fa-fw.fa-remove
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='fileDeleteLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th User Id
+                                                                        th username
+                                                                        th Folder Id
+                                                                        th Folder Name
+                                                                        th User IP
+                                                                        th Time
+                                                                tbody(id='logFileDelete')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | Login
+                                                            i.fa.fa-fw.fa-user
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='userLoginLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th User Email
+                                                                        th User Ip
+                                                                        th User Device
+                                                                        th Access
+                                                                        th Time
+                                                                tbody(id='logLogin')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | Add Member
+                                                            i.fa.fa-fw.fa-user-plus
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='addMemberLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th User Id
+                                                                        th username
+                                                                        th User IP
+                                                                        th Member Id
+                                                                        th Project Name
+                                                                        th Time
+                                                                tbody(id='logAddMember')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | Remove Member
+                                                            i.fa.fa-fw.fa-user-times
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='removeMemberLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th User Id
+                                                                        th username
+                                                                        th User IP
+                                                                        th Member Id
+                                                                        th Project Name
+                                                                        th Time
+                                                                tbody(id='logRemoveMember')
+                                                hr
+                                                .panel.panel-primary
+                                                    .panel-heading.panel-log-table
+                                                        h3.panel-title Log | Create folder
+                                                            i.fa.fa-fw.fa-folder
+                                                    .panel-body
+                                                        a.btn.btn-primary.btn-xs.col-md-offset-5(id='createFolderLogBtn') Load more
+                                                        .table-div
+                                                            table.table.table-condensed.table-hover.table-striped.log-table
+                                                                thead
+                                                                    tr
+                                                                        th #
+                                                                        th User Id
+                                                                        th username
+                                                                        th Folder Id
+                                                                        th Folder Name
+                                                                        th User IP
+                                                                        th Time
+                                                                tbody(id='logCreateFolder')
+                                                hr
+
+    #new-file-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title New File
+                .modal-body
+                    p Upload your file
+                    .row
+                        .col-md-12
+                            h4.text-center.text-muted.alert.alert-danger.modal-alert(id='file-modal-warning')
+                            //form#upload(method='post', action='/uploadFile', enctype='multipart/form-data')
+                            //    #drop
+                            //        | Drop Here
+                            //        a Browse
+                            //        input(type='file', name='upl', multiple='')
+                            //    ul
+                            //        // The file uploads will be shown here
+                            //// JavaScript Includes
+                            //script(src='/javascripts/jquery.knob.js')
+                            //// jQuery File Upload Dependencies
+                            ////script(src='/javascripts/jquery.ui.widget.js')
+                            //script(src='/javascripts/jquery.iframe-transport.js')
+                            //script(src='/javascripts/jquery.fileupload.js')
+                            //// Our main JS file
+                            //script(src='/javascripts/uploadScript.js')
+
+                            form(method='POST', action="/uploadFile",enctype='multipart/form-data', id='fileUploadForm')
+                                h4.text-center.text-muted.alert.alert-danger.modal-alert(id='file-modal')
+                                .form-group
+                                    label.control-label File
+                                    input(type='file', name='myFile', id='yoFile')
+                                    h5(id="fileSize")
+                                .form-group
+                                    input.form-control(type='text', placeholder='Enter file name', id='uploadFilename', name='newFilename')
+                .modal-footer
+                    a.btn.btn-primary(id='uploadFileId') Add
+    #new-folder-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title New Folder
+                .modal-body
+                    p Folder Name
+                    .row
+                        .col-md-12
+                            h4.text-center.text-muted.alert.alert-danger.modal-alert(id='folder-modal')
+                            form(role='form')
+                                .form-group
+                                    input.form-control(id='folderName', type='text', name='folderName', placeholder='Enter Folder Name')
+                .modal-footer
+                    a.btn.btn-primary(id='addFolderBtn') Add
+
+    #members-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title Members
+                .modal-body
+                    ul.lead.list-group.text-muted(id='projectMembers')
+    #add-member-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title Add Member
+                .modal-body
+                    .row
+                        .col-md-12
+                            form(role='form')
+                                .form-group
+                                    label.control-label Select Member
+                                    select.form-control(id="addMemberSelect")
+
+                .modal-footer
+                    a.btn.btn-primary(id='addMemberBtn') Add
+    #restrict-member-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title Restrict Member
+                .modal-body
+                    .row
+                        .col-md-12
+                            form(role='form')
+                                .form-group
+                                    label.control-label Select Member
+                                    select.form-control(id="restrictMemberSelect")
+
+                .modal-footer
+                    a.btn.btn-primary(id='restrictMemberBtn') Restrict

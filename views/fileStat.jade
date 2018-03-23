@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    //script(type='text/javascript', src='/Chart.bundle.js')
+    script(type='text/javascript', src='/Chart.js')
+    //script(type='text/javascript', src='/javascripts/Chart.min.js')
+    script(src='/javascripts/stats.js', type='text/javascript')
+    .container
+        .page-header
+            h3(data-fileid=fileId, data-filename=title, id="statHeader")=title
+        .row(id='statRow')
+            .col-md-4
+                h4 Select the year:
+            .col-md-3
+                .form-group
+                    select.form-control(id="logYear")
+                        -each y in logYears
+                            option(val=y._id.year ) #{y._id.year}
+
+
+            .col-md-12
+                .card.card-inverse.statCard
+                    span.locationStat
+                        canvas(id='statYearly', height=400, width=800)
+

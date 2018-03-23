@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5.section.text-center
+        .container
+            .row
+                .col-md-12
+                    h1.text-primary Hold Quizzes
+            .row
+                .col-md-12
+                    ul.list-unstyled
+                        li
+                            .row
+                                .col-md-2
+                                    h4 #
+                                .col-md-7
+                                    h4 Name
+                                .col-md-3
+                                    h4 Time
+                        - counter = 0
+                        -if (quizzes)
+                            -each quiz in quizzes
+                                -counter++
+                                li
+                                    .row
+                                        .col-md-2
+                                            h4.text-muted #{counter}
+                                        .col-md-7
+                                            h4.questionsList.text-left
+                                                a(href="/hold-quiz/" + quiz._id) #{quiz.title}
+                                                small(title="Quiz contains #{quiz.countQuestions} questions") (#{quiz.countQuestions})
+                                        .col-md-3
+                                            h6.text-muted #{quiz.createdAt}

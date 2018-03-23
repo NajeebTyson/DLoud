@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .section
+        .container.login-singup
+            .row
+                .col-md-12
+                    h1.text-center.text-muted DocSync
+                    h2.text-center.text-muted Create Account
+                    - if (message)
+                        if(message.length>0)
+                            h4.text-center.text-muted
+                                Login.alert.alert-danger.alert-login #{message}
+            .row
+                .col-md-12
+                    form(role='form', method='POST', action='/signup')
+                        .form-group
+                            label.control-label(for='firstname') First Name
+                            input#firstname.form-control(placeholder='Enter first name', type='text', required='required', name='firstname')
+                        .form-group
+                            label.control-label(for='lastname') Last Name
+                            input#lastname.form-control(placeholder='Enter Last name', type='text', required='required', name='lastname')
+                        .form-group
+                            label.control-label(for='username') User Name
+                            input#username.form-control(placeholder='Enter user name', type='text', required='required', name='username')
+                        .form-group
+                            label.control-label(for='area') Province
+                            select.form-control(id="area", required='required', name='area')
+                        .form-group
+                            label.control-label(for='email') Email
+                            input#email.form-control(placeholder='Enter email', type='email', name='email', required='required')
+                        .form-group
+                            label.control-label(for='pass') Password
+                            input#pass.form-control(placeholder='Password', type='password', required='required', name='pass')
+                            i#show-pass(title="Show password").fa.fa-2x.fa-eye.fa-fw.pull-right.text-primary
+                        button.btn.btn-block.btn-primary(type='submit') Sign Up
+                        hr
+                        span.login-account Already have an account?&bsp;
+                            a(href='/login') Login

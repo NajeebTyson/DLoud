@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    script(type='text/javascript', src='/bootstrap-notify.min.js')
+    script(src='/javascripts/quiz.js', type='text/javascript')
+    .py-5
+        .container
+            .row
+                .col-md-12
+                    h2.text-center.text-success Quiz
+                    p.text-muted.text-center(id="quizId") #{qId}
+                    button#addQuestionModalBtn(class="btn btn-primary", data-toggle='modal', data-target='#add-option-modal', role='button') Add Question
+            .row
+                h3.text-left Questions
+                .col-md-12(id='quizQuestions')
+
+                .col-md-12
+                    form(id='holdQuizSubmitBtn', action='/quiz/complete/' + qId, method='GET')
+                        button.btn.btn-block.btn-success(type='submit')
+                            | Mark Complete
+                            i.fa.fa-check.fa-fw
+
+    #add-option-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4.modal-title Add New Question
+                .modal-body
+                    .row
+                        .col-md-12
+                            form
+                                .form-group
+                                    label Question ?
+                                    input.form-control(id='qBox', data-qId=qId, type='text', placeholder='Enter Question', required='required', name='question')
+                                    hr
+                                    button#addOptionBtn.btn.mx-auto.btn-primary.w-25(type='button') Add Option
+                                    button#removeOptionBtn.btn.mx-auto.w-25.btn-danger(type='button') Remove Option
+                                    div#newOption
+                                        hr
+                                        form.form-inline
+                                            .form-group
+                                                input.form-control(id="newOptionText", type='text', required='required',placeholder='Enter option')
+                                            button.btn.btn-primary(type='button', id="newOptionBtn") Done
+
+                                    hr
+                                    p.text-muted *select the correct option
+                                    div
+                                        ul.list-unstyled(id='qOptions')
+
+                .modal-footer
+                    a.btn.btn-primary(id='addQuestionBtn') Add
+                    a.btn.btn-default(data-dismiss='modal') Cancel
